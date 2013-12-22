@@ -18,7 +18,7 @@
       (let [app (if @in-dev?
                   (reload/wrap-reload app)
                   app)]
-        (.waitFor (run-server app {:port 3000}))))))
+        (run-server app {:port 3000})))))
 
 (deftask dev-server
   [boot]
