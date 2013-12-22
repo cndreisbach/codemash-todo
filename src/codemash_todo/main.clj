@@ -3,6 +3,7 @@
   (:require [ring.middleware.reload :as reload]
             [tailrecursion.boot.core :refer [deftask]]))
 
+(def stop-server (atom nil))
 (def in-dev? (atom false))
 
 (defn app
@@ -18,7 +19,9 @@
       (let [app (if @in-dev?
                   (reload/wrap-reload app)
                   app)]
-        (run-server app {:port 3000})))))
+        (when (not (nil? @stop-server))
+          (@stop-server))
+        (reset! stop-server (run-server app {:port 3000}))))))
 
 (deftask dev-server
   [boot]
