@@ -7,13 +7,10 @@
                  [compojure "1.1.5"]
                  [ring/ring-devel "1.1.8"]
                  [ring/ring-core "1.1.8"]                 
-                 [liberator "0.10.0"]]
+                 [liberator "0.10.0"]
+                 [clj-time "0.6.0"]]
  :require-tasks [[tailrecursion.boot.task    :refer :all]
                  [tailrecursion.hoplon.boot  :refer :all]]
  :public        "resources/public"
  :src-static    #{"resources/assets"}
- :src-paths     #{"src"}
- :tasks {:server
-         {:main [codemash-todo.main/server]}
-         :devserver
-         {:main [codemash-todo.main/dev-server]}}}
+ :src-paths     #{"src"}}
